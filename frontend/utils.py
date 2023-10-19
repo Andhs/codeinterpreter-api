@@ -7,8 +7,8 @@ import streamlit as st
 
 from codeinterpreterapi import CodeInterpreterSession
 
-async with CodeInterpreterSession(model="gpt-3.5-turbo") as session:
-	session_id = session.session_id
+with CodeInterpreterSession(model="gpt-3.5-turbo") as session:
+    session_id = session.session_id
 
 def create_temp_folder() -> str:
     """
