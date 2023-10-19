@@ -7,6 +7,8 @@ import streamlit as st
 
 from codeinterpreterapi import CodeInterpreterSession
 
+session = CodeInterpreterSession(model="gpt-3.5-turbo")
+session.astart()
 
 def create_temp_folder() -> str:
     """
@@ -22,7 +24,7 @@ async def get_images(prompt: str, files: Optional[list] = None):
     with st.chat_message("user"):  # type: ignore
         st.write(prompt)
     with st.spinner():
-        async with CodeInterpreterSession(model="gpt-3.5-turbo") as session:
+        
             response = await session.agenerate_response(prompt, files=files)
 
             with st.chat_message("assistant"):  # type: ignore
