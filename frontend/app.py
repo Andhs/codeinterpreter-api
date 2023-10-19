@@ -6,6 +6,14 @@ from utils import get_images  # type: ignore
 
 from codeinterpreterapi import File
 
+session = CodeInterpreterSession()
+session.start()
+session_id = session.session_id
+del session
+
+if 'key' not in st.session_state:
+    st.session_state['key'] = session_id
+
 # Page configuration
 st.set_page_config(layout="wide")
 
