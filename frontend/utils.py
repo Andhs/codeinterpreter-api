@@ -8,7 +8,7 @@ import streamlit as st
 from codeinterpreterapi import CodeInterpreterSession
 
 session = CodeInterpreterSession(model="gpt-3.5-turbo")
-session.astart()
+await session.astart()
 
 def create_temp_folder() -> str:
     """
