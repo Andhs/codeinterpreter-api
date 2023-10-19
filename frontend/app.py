@@ -5,6 +5,7 @@ import streamlit as st
 from utils import get_images  # type: ignore
 
 from codeinterpreterapi import File
+from codeinterpreterapi import CodeInterpreterSession
 
 session = CodeInterpreterSession(model="gpt-3.5-turbo")
 session.start()
