@@ -5,15 +5,6 @@ import streamlit as st
 from utils import get_images  # type: ignore
 
 from codeinterpreterapi import File
-from codeinterpreterapi import CodeInterpreterSession
-
-session = CodeInterpreterSession(model="gpt-3.5-turbo")
-session.start()
-session_id = session.session_id
-del session
-
-if 'key' not in st.session_state:
-    st.session_state['key'] = session_id
 
 # Page configuration
 st.set_page_config(layout="wide")
