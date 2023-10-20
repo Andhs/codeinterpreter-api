@@ -9,6 +9,8 @@ from codeinterpreterapi import CodeInterpreterSession
 
 with CodeInterpreterSession(model="gpt-3.5-turbo") as session:
     session_id = session.session_id
+    if 'key' not in st.session_state:
+        st.session_state.key = session_id
 
 def create_temp_folder() -> str:
     """
@@ -24,12 +26,12 @@ async def get_images(prompt: str, files: Optional[list] = None):
     with st.chat_message("user"):  # type: ignore
         st.write(prompt)
     with st.spinner():
-        async with CodeInterpreterSession().from_id(session_id) as session:        
+        async with CodeInterpreterSession().from_id(st.session_state.key) as session:        
             response = await session.agenerate_response(prompt, files=files)
 
             with st.chat_message("assistant"):  # type: ignore
                 st.write(response.content)
-                st.write(session_id)
+                st.write(st.session_state.key)
 
                 # Showing Results
                 for _file in response.files:
