@@ -89,7 +89,7 @@ async def runner(session: CodeInterpreterSession):
                     response = await session.generate_response(
                         prompt,
                         files=uploaded_files_list,
-                        detailed_error=False,
+                        #detailed_error=False,
                     )
                     st.write(response.content)
 
